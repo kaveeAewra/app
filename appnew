@@ -1,0 +1,180 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: "new app",
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text("app"),
+          backgroundColor: const Color.fromARGB(255, 65, 178, 93),
+        ),
+        body: Builder(
+          builder: (BuildContext context) {
+            // Using a Builder to access the correct context
+            return Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ElevatedButton.icon(
+                      icon: const Icon(
+                        Icons.account_circle_rounded,
+                        color: Colors.black,
+                      ),
+                      label: const Text("Sign Up"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SignUpPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor:
+                            const Color.fromARGB(255, 12, 12, 12), // Text color
+                        backgroundColor: const Color.fromARGB(
+                            255, 111, 209, 136), // Button background color
+                      ),
+                    ),
+                    const SizedBox(width: 10), // Space between the buttons
+                    ElevatedButton.icon(
+                      icon: const Icon(
+                        Icons.login,
+                        color: Colors.black,
+                      ),
+                      label: const Text("Login"),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LoginPage()),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor:
+                            const Color.fromARGB(255, 12, 12, 12), // Text color
+                        backgroundColor: const Color.fromARGB(
+                            255, 111, 209, 136), // Button background color
+                      ),
+                    ), 
+                  ],
+                ),
+             ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class SignUpPage extends StatelessWidget {
+  const SignUpPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          "Sign Up",
+          style: TextStyle(
+            color: Color.fromARGB(255, 16, 14, 14), // Text color
+            fontSize: 20, // Optional: Adjust font size
+            fontWeight: FontWeight.bold, // Optional: Add bold style
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TextField(
+              decoration: InputDecoration(labelText: "Name"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "University"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Country"),
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle form submission here
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.green, // Button background color
+                  foregroundColor: const Color.fromARGB(
+                      255, 12, 11, 11), // Button text color
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 16.0, horizontal: 32.0), // Optional padding
+                  shape: RoundedRectangleBorder(
+                    borderRadius:
+                        BorderRadius.circular(8), // Optional rounded corners
+                  ),
+                ),
+                child: const Text("Submit"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Login"),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TextField(
+              decoration: InputDecoration(labelText: "Email"),
+            ),
+            const TextField(
+              decoration: InputDecoration(labelText: "Password"),
+              obscureText: true,
+            ),
+            const SizedBox(height: 20),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  // Handle login action here
+                },
+                child: const Text("Login"),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
